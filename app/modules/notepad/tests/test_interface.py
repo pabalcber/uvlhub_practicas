@@ -10,7 +10,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
-class TestCreatenotepad():
+class TestInterface():
   def setup_method(self, method):
     self.driver = webdriver.Chrome()
     self.vars = {}
@@ -18,19 +18,16 @@ class TestCreatenotepad():
   def teardown_method(self, method):
     self.driver.quit()
   
-  def test_createnotepad(self):
+  def test_interface(self):
     self.driver.get("http://localhost:5000/login")
-    time.sleep(2)
-    self.driver.set_window_size(912, 1011)
+    self.driver.set_window_size(651, 812)
     self.driver.find_element(By.ID, "email").click()
     self.driver.find_element(By.ID, "email").send_keys("user1@example.com")
+    self.driver.find_element(By.ID, "password").click()
     self.driver.find_element(By.ID, "password").send_keys("1234")
     self.driver.find_element(By.ID, "submit").click()
-    time.sleep(2)
-    self.driver.get("http://localhost:5000/notepad/create")
-    time.sleep(2)
     self.driver.find_element(By.ID, "title").click()
     self.driver.find_element(By.ID, "title").send_keys("n1")
-    self.driver.find_element(By.ID, "body").click()
     self.driver.find_element(By.ID, "body").send_keys("n1")
     self.driver.find_element(By.ID, "submit").click()
+  
